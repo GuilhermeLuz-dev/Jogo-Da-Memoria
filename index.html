@@ -6,21 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Mono:wght@300&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div id="container">
         <div id="ranking">
-            <div id="adwdad" class="card" data-set="maracuja"></div>
         </div>
-        <div id="gameBoard"></div>
-        <div id="qtd_moves"></div>
-    </div>
-    <div id="gameOver">
-        <h1>VOCÊ VENCEU!</h1>
-        <button>JOGAR NOVAMENTE</button>
-    </div>
 
+        <div id="gameBoard">
+            <!-- <div id="adwdad" class="card" data-icon="maracuja">
+            <div class="cardFront"><img src="./images/morango.png" alt="morango"></div>
+            <div class="cardBack">&lt/&gt</div> -->
+
+        </div>
+        <div id="qtd_moves"></div>
+
+        <div id="gameOver">
+            <h1>VOCÊ VENCEU!</h1>
+            <button>JOGAR NOVAMENTE</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+    <script src="interface.js"></script>
 </body>
 
 </html>
