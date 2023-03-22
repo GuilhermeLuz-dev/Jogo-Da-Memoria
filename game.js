@@ -1,4 +1,7 @@
 game = {
+    firstCard: null,
+    secundCard: null,
+    lockMode: false,
     fruits: [
         'abacaxi',
         'banana',
@@ -42,6 +45,40 @@ game = {
             currentIndex--
             [this.cards[currentIndex], this.cards[randomIndex]] = [this.cards[randomIndex], this.cards[currentIndex]];
         }
+    },
+    setCard: function (id) {
+        let card = this.cards.filter(card => card.id == id)[0]
+        if(this.lockMode || card.fliped){
+            return false
+        }
+        if (!this.firstCard) {
+            this.firstCard = card
+            this.firstCard.fliped = true
+            return true
+        } else {
+            this.secundCard = card
+            this.secundCard.fliped = true
+            this.lockMode = true
+            return true
+        }
+    },
+    checkMate: function () {
+        if (!this.firstCard || !this.secundCard) {
+            return false
+        }
+        return this.firstCard.icon === this.secundCard.icon
+    },
+    gameOver: function(){
+       return this.cards.filter(card => !card.fliped).length == 0
+    },
+    clearCards: function(){
+        this.firstCard = null
+        this.secundCard = null
+        this.lockMode = false
+    },
+    unflipedCard: function(){
+        this.firstCard.fliped = false
+        this.secundCard.fliped = false
+        this.clearCards()
     }
-
 }

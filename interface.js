@@ -1,6 +1,7 @@
 const CARD = 'card'
 const FRONT = 'cardFront'
 const BACK = 'cardBack'
+const ICON = 'icon'
 
 startgame()
 
@@ -19,9 +20,8 @@ function initializeCards(){
         cardElement.id = card.id;
 
         createCardContent(card, cardElement)
+        cardElement.addEventListener('click',flipCard)
         gameBoard.appendChild(cardElement)
-    
-
     })
     
 }
@@ -36,11 +36,43 @@ function criateFace(face, card , cardElement){
 
     if (face == FRONT){
         let iconElement = document.createElement('img')
-        iconElement.classList.add(card.icon);
+        iconElement.classList.add(ICON);
         iconElement.src = "./images/" + card.icon + ".png";
         cardElementFace.appendChild(iconElement)
     }else{
         cardElementFace.innerHTML = "&lt/&gt";
     }
     cardElement.appendChild(cardElementFace)
+}
+
+function flipCard(){
+    if(game.setCard(this.id)){
+        this.classList.add('flip')
+       
+        if(game.secundCard){
+            if(game.checkMate()){
+                if(game.gameOver()){
+                    let gameOver = document.getElementById('gameOver')
+                    gameOver.style.display = 'flex'
+                }
+                game.clearCards()
+            }else{
+                setTimeout(()=>{
+                    let firstCardView = document.getElementById(game.firstCard.id)
+                    let secundCardView = document.getElementById(game.secundCard.id)
+                    firstCardView.classList.remove('flip')
+                    secundCardView.classList.remove('flip')
+                    game.unflipedCard()
+                },1000)
+            }
+
+        }
+    }
+}
+
+function reset(){
+    let gameOver = document.getElementById('gameOver')
+    gameOver.style.display = 'none'
+    game.clearCards()
+    startgame()
 }
