@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color:#4aedd7;
+    background-color:#3fd97f;
 }
 
 #container {
@@ -34,11 +34,6 @@ body {
     align-items: center;
     font-size: 25px;
     color: #fff;
-    background-color:#3fd97f;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.670);
-    
 }
 
 #ranking h2, #moves h2 {
