@@ -18,16 +18,7 @@
         <div class="element ranking">
             <div  id="ranking">
                 <h2>Ranking</h2>
-                <ol>
-                    <li>
-                        <p>teste</p>
-                    </li>
-                    <li>
-                        <p>teste</p>
-                    </li>
-                    <li>
-                        <p>teste</p>
-                    </li>
+                <ol id="list">
                 </ol>
             </div>
         </div>
@@ -38,13 +29,14 @@
         <div class="element moves">
             <div  id="moves">
                 <h2>Jogadas</h2>
-                <p>0</p>
+                <p id="contMoves">0</p>
             </div>
         </div>
 
-        <div id="gameOver" onclick="reset()">
-            <h1>VOCÊ VENCEU!</h1>
-            <button>JOGAR NOVAMENTE</button>
+        <div id="gameOver">
+            <h1>COMECE UMA NOVA PARTIDA!</h1>
+            <input onchange="reset()" id="name" type="text" placeholder="Digite seu nome:">
+            <button onclick="reset()">JOGAR</button>
         </div>
     </div>
     <script src="game.js"></script>

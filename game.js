@@ -2,6 +2,8 @@ game = {
     firstCard: null,
     secundCard: null,
     lockMode: false,
+    contMoves: 0,
+    ranking: [],
     fruits: [
         'abacaxi',
         'banana',
@@ -59,6 +61,7 @@ game = {
             this.secundCard = card
             this.secundCard.fliped = true
             this.lockMode = true
+            this.contMoves++
             return true
         }
     },
@@ -80,5 +83,16 @@ game = {
         this.firstCard.fliped = false
         this.secundCard.fliped = false
         this.clearCards()
+    },
+    sortRanking: function(){
+        aux = []
+        for(let i = 0; i < this.ranking.length; i++){
+            if(this.ranking[i] > this.ranking[i++]){
+                aux[0] = this.randomIndex[i++]
+                this.ranking[i++] = this.ranking[i]
+                this.ranking[i] = aux[0]
+            }
+        }
     }
+    
 }

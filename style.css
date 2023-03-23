@@ -111,7 +111,6 @@ body {
     height: 100%;
     position: absolute;
     background-color: #00000088;
-    display: none;
     color: white;
     align-items: center;
     justify-content: center;
@@ -120,6 +119,14 @@ body {
 
 #gameOver h1 {
     margin-bottom: 10px;
+}
+#gameOver input{
+    margin-bottom: 10px;
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #gameOver button {
