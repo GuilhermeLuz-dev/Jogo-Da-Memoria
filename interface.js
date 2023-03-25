@@ -13,7 +13,8 @@ function startgame() {
 function initializeCards() {
     let gameBoard = document.getElementById('gameBoard')
     gameBoard.innerHTML = ''
-    game.contMoves = 0    
+    game.contMoves = 0
+    updateViewRanking()    
     game.cards.forEach(card => {
         let cardElement = document.createElement('div');
         cardElement.classList.add(CARD);
@@ -49,15 +50,13 @@ function criateFace(face, card, cardElement) {
 function flipCard() {
     if (game.setCard(this.id)) {
         this.classList.add('flip')
-        if (game.secundCard) {
-          
+        if (game.secundCard) {         
             document.getElementById('contMoves').innerHTML = game.contMoves;
             if (game.checkMate()) {
                 if (game.gameOver()) {
                     let gameOver = document.getElementById('gameOver')
                     gameOver.style.display = 'flex'
-                    game.ranking.push({'nome': game.namePlayer, 'qtd_jogadas': game.contMoves})
-                    game.sortRanking()
+                    localStorage.setItem( game.contMoves, game.namePlayer) 
                     updateViewRanking()
                 }
                 game.clearCards()
@@ -89,25 +88,30 @@ function reset() {
             inputName.style.border = 'none'
         },500)
     }
-    if(localStorage.length != 0){
-        for(let i = 0; i< localStorage.length; i++){
-            game.ranking[i] = localStorage.getItem(`${i}`)
-        }
-        localStorage.clear()
-        document.getElementById('list').innerHTML = ''
-        for(let i =0; i< game.ranking.length; i++){
-            document.getElementById('list').innerHTML += game.ranking[i] 
-        }
-
-    }
+   
 }
 
 function updateViewRanking(){
-    ranking = document.getElementById('list')
-    ranking.innerHTML = ''
-    for(let i = 0; i < game.ranking.length; i++){
-        ranking.innerHTML +=  `<li>${game.ranking[i].nome} - ${game.ranking[i].qtd_jogadas}</li>`
-        localStorage.setItem(`${i}`,  `<li>${game.ranking[i].nome} - ${game.ranking[i].qtd_jogadas}</li>`)
-    }
+   lista = document.getElementById('list');
+   lista.innerHTML = '';  
+   ranking = sortRanking() 
 
+   for(let i =0; i < localStorage.length; i++){
+        if(i <= 10){
+            lista.innerHTML += `<li>${localStorage.getItem(ranking[i])} - ${ranking[i]}</li>`
+        }
+   }
+ 
+}
+
+function sortRanking(){
+    let ranking = []
+    for(let i = 0 ; i < localStorage.length; i++){
+        ranking.push(localStorage.key(i))
+    }
+    ranking.sort()
+    console.log(ranking)
+    
+    return ranking
+    
 }
