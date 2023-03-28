@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Mono:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="./images/cerebro.png" type="image/x-icon">
 </head>
+
 <body>
-    
+    <div id="container">
+        <div class="element ranking">
+            <div  id="ranking">
+                <h2>Ranking</h2>
+                <ol id="list">
+                </ol>
+            </div>
+        </div>
+        <div class="element gameBoard">
+            <div id="gameBoard">
+            </div>
+        </div>
+        <div class="element moves">
+            <div  id="moves">
+                <h2>Jogadas</h2>
+                <p id="contMoves">0</p>
+            </div>
+        </div>
+
+        <div id="gameOver">
+            <h1>COMECE UMA NOVA PARTIDA!</h1>
+            <input id="name" type="text" placeholder="Digite seu nome:">
+            <button onclick="reset()">JOGAR</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+    <script src="interface.js"></script>
 </body>
+
 </html>
