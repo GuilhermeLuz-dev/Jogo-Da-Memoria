@@ -56,7 +56,7 @@ function flipCard() {
                 if (game.gameOver()) {
                     let gameOver = document.getElementById('gameOver')
                     gameOver.style.display = 'flex'
-                    localStorage.setItem( game.contMoves, game.namePlayer) 
+                    localStorage.setItem(game.namePlayer, game.contMoves) 
                     updateViewRanking()
                 }
                 game.clearCards()
@@ -98,7 +98,7 @@ function updateViewRanking(){
 
    for(let i =0; i < localStorage.length; i++){
         if(i <= 10){
-            lista.innerHTML += `<li>${localStorage.getItem(ranking[i])} - ${ranking[i]}</li>`
+            lista.innerHTML += `<li>${localStorage.key(i)} - ${ranking[i]}</li>`
         }
    }
  
@@ -107,7 +107,7 @@ function updateViewRanking(){
 function sortRanking(){
     let ranking = []
     for(let i = 0 ; i < localStorage.length; i++){
-        ranking.push(localStorage.key(i))
+        ranking.push(localStorage.getItem(localStorage.key(i)))
     }
     ranking.sort()
     console.log(ranking)
